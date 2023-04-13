@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:ecommerce_app/shared/constants/constants.dart';
 import 'package:ecommerce_app/shared/network/local_network.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
@@ -61,8 +62,9 @@ class AuthCubit extends Cubit<AuthStates>{
         var responseData = jsonDecode(response.body);
         if( responseData['status'] == true )
         {
-          await CacheNetwork.insertToCache(key: "token", value: responseData['data']['token']);
-          await CacheNetwork.insertToCache(key: "password", value: password);
+           await CacheNetwork.insertToCache(key: "token", value: responseData['data']['token']);
+           token = await CacheNetwork.getCacheData(key: 'token');
+           await CacheNetwork.insertToCache(key: "password", value: password);
           emit(LoginSuccessState());
         }
         else

@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/layout/layout_cubit/layout_cubit.dart';
+import 'package:ecommerce_app/layout/layout_screen.dart';
 import 'package:ecommerce_app/modules/auth_screens/auth_cubit/auth_cubit.dart';
-import 'package:ecommerce_app/modules/auth_screens/login_screen.dart';
 import 'package:ecommerce_app/modules/boarding_screens/boarding_screen.dart';
 import 'package:ecommerce_app/shared/constants/constants.dart';
 import 'package:ecommerce_app/shared/network/local_network.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: token != null ? const BoardingScreen() : LoginScreen()
+              home: token != null ? const LayoutScreen() :  const BoardingScreen()
           ),
         );
       },

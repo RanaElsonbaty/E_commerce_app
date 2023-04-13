@@ -1,15 +1,13 @@
-import 'package:ecommerce_app/layout/layout_screen.dart';
 import 'package:ecommerce_app/modules/auth_screens/login_screen.dart';
-import 'package:ecommerce_app/modules/boarding_screens/boarding_screen.dart';
 import 'package:ecommerce_app/modules/widgets/alert_dialog.dart';
 import 'package:ecommerce_app/shared/style/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../home_screen/home_screen.dart';
 import 'auth_cubit/auth_cubit.dart';
 import 'auth_cubit/auth_states.dart';
+
 class RegisterScreen extends StatelessWidget {
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -52,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
         else if ( state is RegisterSuccessState )
         {
           Navigator.pop(context);
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const BoardingScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>  LoginScreen()));
         }
       },
       builder: (context,state){

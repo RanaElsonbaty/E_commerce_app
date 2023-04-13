@@ -1,5 +1,6 @@
-import 'package:ecommerce_app/layout/layout_screen.dart';
 import 'package:ecommerce_app/models/boarding_model.dart';
+import 'package:ecommerce_app/modules/auth_screens/register_screen.dart';
+import 'package:ecommerce_app/shared/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -25,16 +26,6 @@ class _BoardingScreenState extends State<BoardingScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children:
           [
-            Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: InkWell(
-                onTap: ()
-                {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LayoutScreen()));
-                },
-                child: const Text("Skip",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold,fontSize: 20),),
-              ),
-            ),
             Expanded(
               child: Container(
                 // color: Colors.grey,
@@ -53,8 +44,8 @@ class _BoardingScreenState extends State<BoardingScreen> {
                       children:
                       [
                         Image.asset(boardingItems[index].image,fit: BoxFit.fill,height: 400,),
-                        Text(boardingItems[index].title,style: const TextStyle(color: Colors.green,fontWeight: FontWeight.bold,fontSize: 19),),
-                        const SizedBox(height: 20,),
+                        Text(boardingItems[index].title,style: const TextStyle(color: mainColor,fontWeight: FontWeight.bold,fontSize: 19),),
+
                         Center(
                           child:Text(boardingItems[index].description,style: const TextStyle(color: Colors.grey)),
                         )
@@ -79,23 +70,62 @@ class _BoardingScreenState extends State<BoardingScreen> {
                   activeDotColor: Colors.green
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional.topEnd,
+            const SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: InkWell(
-                onTap: ()
-                {
-                  if( currentIndex < 2 )
-                  {
-                    pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeIn);
-                  }
-                  else
-                  {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LayoutScreen()));
-                  }
-                },
-                child: const Text("Next",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold,fontSize: 20),),
+                onTap: () {
+                       if( currentIndex < 2 )
+                       {
+                         pageController.nextPage(duration: const Duration(seconds: 1), curve: Curves.easeIn);
+                       }
+                       else
+                       {
+                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> RegisterScreen()));
+                       }
+                     },
+                child: Container(
+                  height:40 ,
+                  width: double.infinity,
+                  decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: mainColor
+                  ),
+                  child: const Center(
+                    child: Text("NEXT",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.white
+                    ),),
+                  ),
+                ),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> RegisterScreen()));
+                },
+                child: Container(
+                  height: 40,
+                  width: double.infinity,
+                  decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Center(
+                    child: Text("SKIP",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: mainColor
+                      ),),
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),

@@ -76,9 +76,7 @@ class ProfileScreen extends StatelessWidget{
                                     title: "Log out",
                                     onTap: ()
                                     {
-                                      //  لازم تبقا pudhReplacement
-                                      //run
-                                      //
+                                      cubit.bottomNavIndex=0;
                                       CacheNetwork.deleteCacheItem(key: 'token');
                                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                                  }

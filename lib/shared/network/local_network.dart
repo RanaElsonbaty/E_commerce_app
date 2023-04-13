@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/modules/auth_screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheNetwork{

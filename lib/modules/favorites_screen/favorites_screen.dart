@@ -13,9 +13,9 @@ class FavoritesScreen extends StatelessWidget {
       listener: (context,state){},
       builder: (context,state){
         return Scaffold(
-            appBar: AppBar(title: const Text("Favorites"),elevation:0,backgroundColor: Colors.transparent,foregroundColor: mainColor,),
+            appBar: AppBar(title: const Text("Favorites"),elevation:0,backgroundColor: thirdColor,foregroundColor: mainColor,),
             body: cubit.favoritesData.isEmpty ?
-            const Center(child: Text("Loading...."),) :
+            const Center(child: Text("Empty",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),) :
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.5,vertical: 10),
               child: ListView.builder(

@@ -74,7 +74,7 @@ class UpdateUserDataScreen extends StatelessWidget {
                       },
                       color: mainColor,
                       textColor: Colors.white,
-                      child: Text(state is UpdateUserDataLoadingState ? "Loading....." : "Update"),
+                      child: Text(state is UpdateUserDataLoadingState ? "Loading" : "Update"),
                     )
                   ],
                 ),

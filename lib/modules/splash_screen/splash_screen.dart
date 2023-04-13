@@ -1,5 +1,5 @@
+import 'package:ecommerce_app/modules/boarding_screens/boarding_screen.dart';
 import 'package:flutter/material.dart';
-import '../home_screen/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,8 +11,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 5),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreen()));
+    Future.delayed(const Duration(seconds: 3),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const BoardingScreen()));
     });
     // TODO: implement initState
     super.initState();

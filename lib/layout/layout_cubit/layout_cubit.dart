@@ -63,7 +63,7 @@ class LayoutCubit extends Cubit<LayoutStates>{
       {
         bannersData.add(BannerModel.fromJson(data: item));
       }
-      // print("First Url on Banners Data is : ${bannersData.first.image}");
+
       emit(GetBannersSuccessState());
     }
     else
@@ -75,7 +75,6 @@ class LayoutCubit extends Cubit<LayoutStates>{
   }
 
   List<CategoryModel> categoriesData = [];
-  // Get Banners Data
   void getCategories() async {
     emit(GetCategoriesLoadingState());
     Response response = await http.get(
@@ -127,7 +126,6 @@ class LayoutCubit extends Cubit<LayoutStates>{
     else
     {
       productsData = [];
-      // print("Products Data is : $responseBody");
       emit(FailedToGetProductsState());
     }
   }
@@ -174,7 +172,7 @@ class LayoutCubit extends Cubit<LayoutStates>{
     }
   }
 
-  // Related to cart
+
   List<ProductModel> cartData = [];
   Future<void> getCart() async {
     cartData.clear();
@@ -206,6 +204,8 @@ class LayoutCubit extends Cubit<LayoutStates>{
 
   Set<String> cartsID = {};
   void addOrRemoveFromCart({required String productID}) async {
+    cartsID.contains(productID) ? cartsID.remove(productID) : cartsID.add(productID);
+    emit(GetCartLoadingState());
     Response response = await http.post(
         Uri.parse("https://student.valuxapps.com/api/carts"),
         headers:
@@ -221,7 +221,7 @@ class LayoutCubit extends Cubit<LayoutStates>{
     var responseBody = jsonDecode(response.body);
     if( responseBody['status'] == true )
     {
-      cartsID.contains(productID) ? cartsID.remove(productID) : cartsID.add(productID);
+      await getCart();
       emit(AddOrRemoveFromCartSuccessState());
     }
     else
@@ -257,8 +257,6 @@ class LayoutCubit extends Cubit<LayoutStates>{
     }
   }
 
-
-  // Related to Product Quantity ( On Cart )
   int productNum = 1 ;
   void increment(){
     productNum++;

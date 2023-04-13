@@ -65,7 +65,7 @@ class ChangePasswordScreen extends StatelessWidget {
                       },
                       color: mainColor,
                       textColor: Colors.white,
-                      child: Text(state is ChangePasswordLoadingState ? "Loading....." : "Submit"),
+                      child: Text(state is ChangePasswordLoadingState ? "Loading" : "Submit"),
                     )
                   ],
                 ),

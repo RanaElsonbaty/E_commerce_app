@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/layout/layout_cubit/layout_cubit.dart';
 import 'package:ecommerce_app/models/category_model.dart';
+import 'package:ecommerce_app/shared/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,7 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<CategoryModel>categories=BlocProvider.of<LayoutCubit>(context).categoriesData;
     return  Scaffold(
+        appBar: AppBar(title: const Text("Categories"),elevation:0,backgroundColor: thirdColor,foregroundColor: mainColor,),
       body: Padding(padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 12),
       child: GridView.builder(
         itemCount: categories.length,
